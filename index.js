@@ -164,7 +164,7 @@ var AxiosDigest = (function () {
             });
             return t;
         });
-        var calams = ['realm', 'nonce', 'qop', 'opaque'];
+        var calams = ['realm', 'nonce', 'qop'];
         var paramsCalamsOk = paramsMapArray.map(function (v) {
             if (!('algorithm' in v)) {
                 v.algorithm = 'MD5';
