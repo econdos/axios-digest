@@ -224,7 +224,7 @@ var AxiosDigest = (function () {
             response: response,
             opaque: opaque,
         };
-        var auth = "Digest ".concat(Object.keys(dh).map(function (v) { return "".concat(v, "=\"").concat(dh[v], "\""); }).join(', '));
+        var auth = "Digest ".concat(Object.keys(dh).filter(function (v) { return !!dh[v]; }).map(function (v) { return "".concat(v, "=\"").concat(dh[v], "\""); }).join(', '));
         if (config === undefined) {
             return { headers: { Authorization: auth } };
         }

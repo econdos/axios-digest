@@ -169,7 +169,7 @@ export default class AxiosDigest {
       opaque,
     };
 
-    const auth = `Digest ${Object.keys(dh).map((v) => `${v}="${dh[v]}"`).join(', ')}`;
+    const auth = `Digest ${Object.keys(dh).filter(v => !!dh[v]).map((v) => `${v}="${dh[v]}"`).join(', ')}`;
 
     if (config === undefined) {
       return { headers: { Authorization: auth } };
