@@ -137,7 +137,13 @@ export default class AxiosDigest {
       opaque,
       algorithm,
     } = params;
-    const uri: string = url.split(/^https?:\/\/[^/]+/).filter((v) => v !== '')[0];
+
+    let defaultURL = url;
+    if (this.axios.defaults.baseURL) {
+      defaultURL = `${this.axios.defaults.baseURL}${url}`;
+    }
+
+    const uri: string = defaultURL.split(/^https?:\/\/[^/]+/).filter((v) => v !== '')[0];
     const cnonce: string = Math.random().toString(36).substring(2, 10);
     const nc: string = '00000001';
     const qop: string = 'auth';
