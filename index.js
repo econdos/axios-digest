@@ -192,11 +192,7 @@ var AxiosDigest = (function () {
         var username = this.username;
         var passwd = this.passwd;
         var realm = params.realm, nonce = params.nonce, opaque = params.opaque, algorithm = params.algorithm;
-        var defaultURL = url;
-        if (this.axios.defaults.baseURL) {
-            defaultURL = "".concat(this.axios.defaults.baseURL).concat(url);
-        }
-        var uri = defaultURL.split(/^https?:\/\/[^/]+/).filter(function (v) { return v !== ''; })[0];
+        var uri = url.split(/^https?:\/\/[^/]+/).filter(function (v) { return v !== ''; })[0];
         var cnonce = Math.random().toString(36).substring(2, 10);
         var nc = '00000001';
         var qop = 'auth';
